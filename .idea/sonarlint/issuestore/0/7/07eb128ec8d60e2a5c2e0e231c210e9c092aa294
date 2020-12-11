@@ -1,0 +1,30 @@
+
+I
+java:S1199ğ"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+I
+java:S1199£"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+I
+java:S1199­"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+I
+java:S1199Í"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+y
+java:S3923Ó"]This conditional operation returns the same value whether the condition is "true" or "false".(—ùéåúÿÿÿÿ
+`
+java:S3358İ"DExtract this nested ternary operation into an independent statement.(—ùéåúÿÿÿÿ
+i
+java:S3776ú"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(’¯±
+\	java:S112Ô"FDefine and throw a dedicated exception instead of using a generic one.(Ïíº‰
+`
+java:S3358â"DExtract this nested ternary operation into an independent statement.(ÿ¤ß˜şÿÿÿÿ
+I
+java:S1199ƒ"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+n
+java:S3776£"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(¹íƒïûÿÿÿÿ
+y
+java:S3923Ø"]This conditional operation returns the same value whether the condition is "true" or "false".(ÿ¤ß˜şÿÿÿÿ
+`
+java:S3358Ó"DExtract this nested ternary operation into an independent statement.(—ùéåúÿÿÿÿ
+`
+java:S3358Ø"DExtract this nested ternary operation into an independent statement.(ÿ¤ß˜şÿÿÿÿ
+I
+java:S1199¶"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
