@@ -2,18 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MaterialCalendarViewActivity">
+    tools:context="com.jay.androidallsampletest.MaterialCalendarViewActivity">
 
     <com.applandeo.materialcalendarview.CalendarView
-        android:id="@+id/calendarView"
+        android:id="@+id/calendar_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        app:type="one_day_picker"
-        app:eventsEnabled="true" />
-
+        app:abbreviationsBarColor="@color/color_white"
+        app:abbreviationsLabelsColor="@color/color_black"
+        app:daysLabelsColor="@color/color_black"
+        app:eventsEnabled="true"
+        app:headerColor="@color/color_white"
+        app:headerLabelColor="@color/color_black"
+        app:highlightedDaysLabelsColor="#FFFF00"
+        app:selectionColor="#FF00FF"
+        app:selectionLabelColor="@color/color_dark_red"
+        app:todayLabelColor="@color/color_dark_green"
+        app:type="classic" />
 
 </LinearLayout>
