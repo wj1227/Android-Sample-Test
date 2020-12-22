@@ -20,4 +20,11 @@
         android:onClick="mpchart"
         android:text="MP Chart Library" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="rxjava"
+        android:text="RxJava" />
+
+
 </LinearLayout>

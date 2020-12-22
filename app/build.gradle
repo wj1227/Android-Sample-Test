@@ -27,6 +27,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -44,10 +48,11 @@ dependencies {
     // mpchart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
-    // material calendar
-    implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
-
-    implementation 'com.haibin:calendarview:3.7.0'
-
+    // applandeo calendar
     implementation 'com.applandeo:material-calendar-view:1.8.0-rc01'
+
+    // rx
+    implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.2.20'
+    implementation group: 'io.reactivex.rxjava2', name: 'rxkotlin', version: '2.4.0'
+    implementation group: 'io.reactivex.rxjava2', name: 'rxandroid', version: '2.1.1'
 }
