@@ -1,7 +1,6 @@
 package com.jay.androidallsampletest
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.applandeo.materialcalendarview.CalendarView
@@ -14,7 +13,7 @@ class MaterialCalendarViewActivity : AppCompatActivity() {
     private lateinit var calendarView: CalendarView
     private lateinit var linearLayout: LinearLayout
     private lateinit var events: MutableList<EventDay>
-    private val TAG = javaClass.simpleName
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_material_calendar_view)

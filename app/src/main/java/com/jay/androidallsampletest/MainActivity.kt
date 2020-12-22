@@ -1,24 +1,17 @@
 package com.jay.androidallsampletest
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.jay.androidallsampletest.rx.RxJavaActivity
 
 class MainActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        try {
-            throw RuntimeException("zzzzz")
-        } catch (e: Exception) {
-            Log.d("testest", "onCreate: $e")
-        }
     }
 
     fun materialCalendarView(v: View) {
@@ -28,6 +21,11 @@ class MainActivity : AppCompatActivity() {
 
     fun mpchart(v: View) {
         val intent = Intent(this, MpChartActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun rxjava(v: View) {
+        val intent = Intent(this, RxJavaActivity::class.java)
         startActivity(intent)
     }
 }
