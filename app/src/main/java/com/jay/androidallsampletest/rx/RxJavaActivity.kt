@@ -136,7 +136,7 @@ class RxJavaActivity : AppCompatActivity() {
             .let(compositeDisposable::add)
 
         /**
-         * combineLattest
+         * combineLatest
          */
         Observable.combineLatest(
             firstTextSubject,
