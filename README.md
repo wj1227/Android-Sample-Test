@@ -7,7 +7,7 @@
 ## Structure
 - Applandeo Material Calendar View
 - MP Chart
-- RxJAva
+- RxJava
 ___
 
 
