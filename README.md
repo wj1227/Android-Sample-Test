@@ -21,6 +21,10 @@ ___
 - **throttleFirst**
 - **merge**
 - **combineLatest**
+- **switchMap**
+- **takeUntil**
+- **withFromLatest**
+- **retryWhen**
 ___
 
 
