@@ -1,25 +1,27 @@
 package com.jay.androidallsampletest.rx
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
+import android.view.View
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.jay.androidallsampletest.R
+import io.reactivex.Flowable
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.BiFunction
 import io.reactivex.functions.Function3
+import io.reactivex.rxkotlin.addTo
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 import io.reactivex.subjects.Subject
 import java.util.concurrent.TimeUnit
 
 class RxJavaActivity : AppCompatActivity() {
-
+    private val TAG = javaClass.simpleName
     private val compositeDisposable = CompositeDisposable()
     private val backButtonSubject: Subject<Unit> = PublishSubject.create()
     private val textSubject: Subject<String> = PublishSubject.create()
@@ -34,6 +36,11 @@ class RxJavaActivity : AppCompatActivity() {
     private val secondCheckBoxSubject: Subject<Boolean> = BehaviorSubject.createDefault(false)
     private val thirdCheckBoxSubject: Subject<Boolean> = BehaviorSubject.createDefault(false)
     private val fourthCheckBoxSubject: Subject<Boolean> = BehaviorSubject.createDefault(false)
+    private val btnTimerSubject: Subject<Unit> = PublishSubject.create()
+    private val startTimerSubject: Subject<Unit> = PublishSubject.create()
+    private val stopTimerSubject: Subject<Unit> = PublishSubject.create()
+    private val latestButtonSubject: Subject<Unit> = PublishSubject.create()
+    private val latestCheckBoxSubject: Subject<Boolean> = BehaviorSubject.createDefault(false)
 
     private lateinit var backButton: Button
     private lateinit var text: EditText
@@ -53,6 +60,16 @@ class RxJavaActivity : AppCompatActivity() {
     private lateinit var cbSecond: CheckBox
     private lateinit var cbThird: CheckBox
     private lateinit var cbFourth: CheckBox
+    private lateinit var btnTimer: Button
+    private lateinit var timerResult: TextView
+    private lateinit var startButton: Button
+    private lateinit var stopButton: Button
+    private lateinit var secondTimerResult: TextView
+    private lateinit var withFromLatestButton: Button
+    private lateinit var withFromLatestCheckBox: CheckBox
+    private lateinit var retryButton1: Button
+    private lateinit var retryButton2: Button
+    private lateinit var progressBar: ProgressBar
 
     private var count = 0
 
@@ -78,6 +95,16 @@ class RxJavaActivity : AppCompatActivity() {
         cbSecond = findViewById(R.id.cb_second)
         cbThird = findViewById(R.id.cb_third)
         cbFourth = findViewById(R.id.cb_fourth)
+        btnTimer = findViewById(R.id.btn_timer)
+        timerResult = findViewById(R.id.tv_timer_result)
+        startButton = findViewById(R.id.btn_start)
+        stopButton = findViewById(R.id.btn_stop)
+        secondTimerResult = findViewById(R.id.tv_second_timer_result)
+        withFromLatestButton = findViewById(R.id.btn_withfromlatest)
+        withFromLatestCheckBox = findViewById(R.id.cb_withfromlatest)
+        retryButton1 = findViewById(R.id.btn_automatic)
+        retryButton2 = findViewById(R.id.btn_dialog)
+        progressBar = findViewById(R.id.pb_loading)
 
         initSetting()
         bindRx()
@@ -97,6 +124,12 @@ class RxJavaActivity : AppCompatActivity() {
         cbSecond.setOnClickListener { secondCheckBoxSubject.onNext(cbSecond.isChecked) }
         cbThird.setOnClickListener { thirdCheckBoxSubject.onNext(cbThird.isChecked) }
         cbFourth.setOnClickListener { fourthCheckBoxSubject.onNext(cbFourth.isChecked) }
+        btnTimer.setOnClickListener { btnTimerSubject.onNext(Unit) }
+        startButton.setOnClickListener { startTimerSubject.onNext(Unit) }
+        stopButton.setOnClickListener { stopTimerSubject.onNext(Unit) }
+        withFromLatestButton.setOnClickListener { latestButtonSubject.onNext(Unit) }
+        retryButton1.setOnClickListener { retryWhenAutomatic() }
+        retryButton2.setOnClickListener { retryWhenDialog() }
     }
 
     private fun bindRx() {
@@ -165,6 +198,102 @@ class RxJavaActivity : AppCompatActivity() {
             .map { (first, second, third) -> first && second && third }
             .subscribe { cbFirst.isChecked = it }
             .let(compositeDisposable::add)
+
+        /**
+         * switchMap
+         */
+        btnTimerSubject.switchMap {
+            Observable.interval(1, TimeUnit.SECONDS)
+                .map { second -> second + 1 }
+                .startWith(0)
+                .map { second ->
+                    String.format(
+                        "%02d:%02d",
+                        second / TimeUnit.MINUTES.toSeconds(1),
+                        second % TimeUnit.MINUTES.toSeconds(1)
+                    )
+                }
+        }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(timerResult::setText)
+            .let(compositeDisposable::add)
+
+        /**
+         * switchMap + takeUntil
+         */
+        startTimerSubject.switchMap {
+            Observable.interval(1, TimeUnit.SECONDS)
+                .map { second -> second + 1 }
+                .startWith(0)
+                .map { second ->
+                    String.format(
+                        "%02d.%02d",
+                        second / TimeUnit.MINUTES.toSeconds(1),
+                        second % TimeUnit.MINUTES.toSeconds(1)
+                    )
+                }
+                .takeUntil(stopTimerSubject)
+        }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(secondTimerResult::setText)
+            .addTo(compositeDisposable)
+
+        /**
+         * withFromLatest
+         */
+        latestButtonSubject.withLatestFrom(
+            latestCheckBoxSubject,
+            BiFunction { _: Unit, x: Boolean -> x }
+        )
+            .map(Boolean::not)
+            .subscribe { latestCheckBoxSubject.onNext(it) }
+            .let(compositeDisposable::add)
+
+        latestCheckBoxSubject
+            .subscribe { withFromLatestCheckBox.isChecked = it }
+            .addTo(compositeDisposable)
+    }
+
+    /**
+     * retryWhen
+     */
+    private fun retryWhenAutomatic() {
+        Single.error<Int>(RuntimeException())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { loading(true) }
+            .retryWhen { retryWhen ->
+                retryWhen.flatMap {
+                    Toast.makeText(this, "3초 마다 5번 재구독", Toast.LENGTH_SHORT).show()
+                    Flowable.timer(3, TimeUnit.SECONDS)
+                }
+                    .take(5)
+            }
+            .doAfterTerminate { loading(false) }
+            .subscribe(::println, ::println)
+            .addTo(compositeDisposable)
+    }
+
+    /**
+     * retryWhen
+     */
+    private fun retryWhenDialog() {
+        Observable.error<Int>(RuntimeException())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnNext { loading(true) }
+            .retryWhen { retryWhen ->
+                retryWhen.flatMapSingle { error ->
+                    Single.create<Unit> { emitter ->
+                        AlertDialog.Builder(this)
+                            .setTitle("재시도 하시겠습니까")
+                            .setPositiveButton("네") { _, _ -> emitter.onSuccess(Unit) }
+                            .setNegativeButton("아니요") { _, _ -> emitter.onError(error) }
+                            .show()
+                    }
+                }
+            }
+            .doAfterTerminate { loading(false) }
+            .subscribe(::println, ::println)
+            .addTo(compositeDisposable)
     }
 
     private fun showPasswordResult(visible: Boolean) {
@@ -174,6 +303,15 @@ class RxJavaActivity : AppCompatActivity() {
             "비밀번호가 일치하지 않아요"
         }
     }
+
+    private fun loading(visible: Boolean) {
+        progressBar.visibility = if (visible) {
+            View.VISIBLE
+        } else {
+            View.INVISIBLE
+        }
+    }
+
 
     override fun onBackPressed() {
         backButtonSubject.onNext(Unit)

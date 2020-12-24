@@ -7,7 +7,7 @@
 ## Structure
 - Applandeo Material Calendar View
 - MP Chart
-- RxJAva
+- RxJava
 ___
 
 
@@ -21,6 +21,10 @@ ___
 - **throttleFirst**
 - **merge**
 - **combineLatest**
+- **switchMap**
+- **takeUntil**
+- **withFromLatest**
+- **retryWhen**
 ___
 
 
