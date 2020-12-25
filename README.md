@@ -15,7 +15,7 @@ ___
 
 ### branch rx
 ![desc~~](Users/a1/Desktop/스크린샷\2020-12-25\오후\6.46.01.png)
-
+![app image](/Users/a1/Desktop/스크린샷\2020-12-25\오후\6.46.18.png)
 
 - **buffer**
 - **map**
