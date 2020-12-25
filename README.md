@@ -14,10 +14,7 @@ ___
 
 
 ### branch rx
-![desc~~](./MarkdownImage/image1.png)
-![app image](Users/a1/MyselfProjects/MarkdownImage/image2.png)
-![](Users/a1/MyselfProjects/MarkdownImage/image3.png)
-![](Users/a1/MyselfProjects/MarkdownImage/image4.png)
+<img src="Users/a1/MyselfProjects/MarkdownImage/image2.png" width="150" height="150">
 
 - **buffer**
 - **map**
