@@ -15,7 +15,6 @@ ___
 
 ### branch rx
 <img src="Users/a1/MyselfProjects/MarkdownImage/image2.png" width="150" height="150">
-![](Users/a1/MyselfProjects/MarkdownImage/image2.png)
 
 - **buffer**
 - **map**
