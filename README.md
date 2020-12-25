@@ -15,7 +15,18 @@ ___
 
 ### branch rx
 - **buffer**
+  > buffer를 활용한 onBackPressed
+            ```(kotlin)
+               >backButtonSubject
+                    .map { System.currentTimeMillis() }
+                    .buffer(2, 1)
+                    .map { val (first, second) = it; first to second }
+                    .filter { (first, second) -> second - first < 1000 }
+                    .subscribe { finish() }
+                    .let(compositeDisposable::add)
+             ```
 - **map**
+   dddasdf
 - **filter**
 - **debounce**
 - **throttleFirst**
@@ -25,6 +36,7 @@ ___
 - **takeUntil**
 - **withFromLatest**
 - **retryWhen**
+- **Hot Observable**
 ___
 
 
