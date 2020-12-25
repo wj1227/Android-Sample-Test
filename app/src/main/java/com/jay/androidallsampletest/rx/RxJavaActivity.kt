@@ -18,11 +18,13 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
 import io.reactivex.subjects.Subject
+import kotlinx.android.synthetic.main.activity_rx_java.*
 import java.util.concurrent.TimeUnit
 
 class RxJavaActivity : AppCompatActivity() {
     private val TAG = javaClass.simpleName
     private val compositeDisposable = CompositeDisposable()
+    private val hotObservableCompositeDisposable = CompositeDisposable()
     private val backButtonSubject: Subject<Unit> = PublishSubject.create()
     private val textSubject: Subject<String> = PublishSubject.create()
     private val toggleButtonSubject: Subject<Unit> = PublishSubject.create()
@@ -41,6 +43,26 @@ class RxJavaActivity : AppCompatActivity() {
     private val stopTimerSubject: Subject<Unit> = PublishSubject.create()
     private val latestButtonSubject: Subject<Unit> = PublishSubject.create()
     private val latestCheckBoxSubject: Subject<Boolean> = BehaviorSubject.createDefault(false)
+    private val hotSubject1 = PublishSubject.create<Unit>()
+    private val hotSubject2 = BehaviorSubject.createDefault(false)
+    private val hotSubject3 = BehaviorSubject.createDefault(false)
+    private val hotSubject4 = BehaviorSubject.createDefault(false)
+
+    private val allHotObservable = Observable.combineLatest(
+        hotSubject2,
+        hotSubject3,
+        hotSubject4,
+        Function3 { t1: Boolean, t2: Boolean, t3: Boolean -> Triple(t1, t2, t3) }
+    )
+        .map { (t1, t2, t3) -> t1 && t2 && t3 }
+        .replay(1).autoConnect()
+
+    private val publishObservable = Observable.interval(0, 1, TimeUnit.SECONDS)
+        .map { seconds ->
+            val minutes = TimeUnit.SECONDS.toMinutes(seconds)
+            val seconds = seconds % TimeUnit.MINUTES.toSeconds(1)
+            String.format("%02d:%02d", minutes, seconds)
+        }.share()
 
     private lateinit var backButton: Button
     private lateinit var text: EditText
@@ -70,6 +92,14 @@ class RxJavaActivity : AppCompatActivity() {
     private lateinit var retryButton1: Button
     private lateinit var retryButton2: Button
     private lateinit var progressBar: ProgressBar
+    private lateinit var buttonSubscribe1: Button
+    private lateinit var buttonSubscribe2: Button
+    private lateinit var buttonSubscribe3: Button
+    private lateinit var buttonConnect: Button
+    private lateinit var buttonDispose: Button
+    private lateinit var tvObserve1: TextView
+    private lateinit var tvObserve2: TextView
+    private lateinit var tvObserve3: TextView
 
     private var count = 0
 
@@ -105,8 +135,22 @@ class RxJavaActivity : AppCompatActivity() {
         retryButton1 = findViewById(R.id.btn_automatic)
         retryButton2 = findViewById(R.id.btn_dialog)
         progressBar = findViewById(R.id.pb_loading)
+        buttonSubscribe1 = findViewById(R.id.btn_subscribe1)
+        buttonSubscribe2 = findViewById(R.id.btn_subscribe2)
+        buttonSubscribe3 = findViewById(R.id.btn_subscribe3)
+        buttonConnect = findViewById(R.id.btn_connect)
+        buttonDispose = findViewById(R.id.btn_dispose)
+        tvObserve1 = findViewById(R.id.tv_observe1)
+        tvObserve2 = findViewById(R.id.tv_observe2)
+        tvObserve3 = findViewById(R.id.tv_observe3)
 
         initSetting()
+
+        bindClick(cb_hot1, hotSubject1)
+        bindCheckChanges(cb_hot2, hotSubject2)
+        bindCheckChanges(cb_hot3, hotSubject3)
+        bindCheckChanges(cb_hot4, hotSubject4)
+
         bindRx()
     }
 
@@ -130,6 +174,33 @@ class RxJavaActivity : AppCompatActivity() {
         withFromLatestButton.setOnClickListener { latestButtonSubject.onNext(Unit) }
         retryButton1.setOnClickListener { retryWhenAutomatic() }
         retryButton2.setOnClickListener { retryWhenDialog() }
+        buttonSubscribe1.setOnClickListener {
+            publishObservable.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(tvObserve1::setText)
+                .addTo(hotObservableCompositeDisposable)
+        }
+        buttonSubscribe2.setOnClickListener {
+            publishObservable.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(tvObserve2::setText)
+                .addTo(hotObservableCompositeDisposable)
+        }
+
+        buttonSubscribe3.setOnClickListener {
+            publishObservable.observeOn(AndroidSchedulers.mainThread())
+                .subscribe(tvObserve3::setText)
+                .addTo(hotObservableCompositeDisposable)
+        }
+
+        buttonConnect.setOnClickListener {
+            //publishObservable.connect().addTo(hotObservableCompositeDisposable)
+        }
+
+        buttonDispose.setOnClickListener {
+            hotObservableCompositeDisposable.clear()
+            tvObserve1.text = ""
+            tvObserve2.text = ""
+            tvObserve3.text = ""
+        }
     }
 
     private fun bindRx() {
@@ -227,7 +298,7 @@ class RxJavaActivity : AppCompatActivity() {
                 .startWith(0)
                 .map { second ->
                     String.format(
-                        "%02d.%02d",
+                        "%02d:%02d",
                         second / TimeUnit.MINUTES.toSeconds(1),
                         second % TimeUnit.MINUTES.toSeconds(1)
                     )
@@ -252,6 +323,27 @@ class RxJavaActivity : AppCompatActivity() {
         latestCheckBoxSubject
             .subscribe { withFromLatestCheckBox.isChecked = it }
             .addTo(compositeDisposable)
+
+        /**
+         * hot observalbe
+         */
+        allHotObservable.observeOn(AndroidSchedulers.mainThread())
+            .subscribe(cb_hot1::setChecked)
+            .let(compositeDisposable::add)
+
+        val allCheck = hotSubject1.withLatestFrom(
+            allHotObservable, BiFunction { _: Unit, checked: Boolean -> checked }
+        )
+            .map(Boolean::not)
+            .share()
+
+        allCheck.observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                cb_hot1.isChecked = it
+                cb_hot2.isChecked = it
+                cb_hot3.isChecked = it
+                cb_hot4.isChecked = it
+            }.addTo(compositeDisposable)
     }
 
     /**
@@ -294,6 +386,20 @@ class RxJavaActivity : AppCompatActivity() {
             .doAfterTerminate { loading(false) }
             .subscribe(::println, ::println)
             .addTo(compositeDisposable)
+    }
+
+    /**
+     * hot observalbe
+     */
+    private fun bindCheckChanges(cb: CheckBox, changes: BehaviorSubject<Boolean>) {
+        cb.setOnCheckedChangeListener { _, isChecked -> changes.onNext(isChecked) }
+    }
+
+    /**
+     * hot observalbe
+     */
+    private fun bindClick(cb: CheckBox, subject: PublishSubject<Unit>) {
+        cb.setOnClickListener { subject.onNext(Unit) }
     }
 
     private fun showPasswordResult(visible: Boolean) {

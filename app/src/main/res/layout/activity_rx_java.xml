@@ -20,7 +20,7 @@
                 android:id="@+id/btn_back"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="뒤 로 가 기 (빠르게 뒤로 2번 누르세요)" />
+                android:text="BACK PRESSED" />
 
             <EditText
                 android:id="@+id/ed_text"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:background="@null"
-                android:hint="아무거나 입력하세요" />
+                android:hint="debounce (아무거나 입력하세요)" />
 
             <TextView
                 android:id="@+id/tv_result"
@@ -53,7 +53,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Toggle!" />
+                    android:text="THORTTLE FIRST" />
 
             </LinearLayout>
 
@@ -68,14 +68,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TAP 1" />
+                    android:text="MERGE TAP 1" />
 
                 <Button
                     android:id="@+id/btn_right_tap"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TAP 2" />
+                    android:text="MERGE TAP 2" />
 
             </LinearLayout>
 
@@ -91,14 +91,14 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"
                 android:background="@null"
-                android:hint="아무거나 입력하세요" />
+                android:hint="COMBINELATEST (아무거나 입력하세요)" />
 
             <EditText
                 android:id="@+id/et_second"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@null"
-                android:hint="아무거나 입력하세요" />
+                android:hint="COMBINELATEST (아무거나 입력하세요)" />
 
             <TextView
                 android:id="@+id/tv_combine_result"
@@ -111,14 +111,14 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="50dp"
                 android:background="@null"
-                android:hint="비밀번호를 입력하세요" />
+                android:hint="COMBINELATEST (비밀번호를 입력하세요)" />
 
             <EditText
                 android:id="@+id/et_second_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@null"
-                android:hint="비밀번호를 입력하세요" />
+                android:hint="COMBINELATEST (비밀번호를 입력하세요)" />
 
             <TextView
                 android:id="@+id/tv_password_result"
@@ -135,25 +135,6 @@
                 android:orientation="horizontal">
 
                 <CheckBox
-                    android:id="@+id/cb_first"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="전체 동의" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <CheckBox
                     android:id="@+id/cb_second"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -161,7 +142,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="개인정보 처리방침" />
+                    android:text="COMBINELATEST 개인정보 처리방침" />
 
             </LinearLayout>
 
@@ -180,7 +161,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="마케팅 활용 약관" />
+                    android:text="COMBINELATEST 마케팅 활용 약관" />
 
             </LinearLayout>
 
@@ -199,7 +180,26 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="서비스 이용약관" />
+                    android:text="COMBINELATEST 서비스 이용약관" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="전체 동의" />
 
             </LinearLayout>
 
@@ -208,7 +208,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:text="CLICK TIMER AND RESET" />
+                android:text="SWITCHMAP" />
 
             <TextView
                 android:id="@+id/tv_timer_result"
@@ -228,14 +228,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="START" />
+                    android:text="SWITCHMAP" />
 
                 <Button
                     android:id="@+id/btn_stop"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="STOP" />
+                    android:text="TAKEUNTIL" />
 
             </LinearLayout>
 
@@ -263,7 +263,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="CLICK" />
+                    android:text="WITHFROMLATEST" />
 
             </LinearLayout>
 
@@ -301,8 +301,177 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:text=" ↓ HOT OBSERVABLE ↓ "
+                android:textSize="24dp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_observe1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="observe 1" />
+
+                <Button
+                    android:id="@+id/btn_subscribe1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SUBSCRIBE" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_observe2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="observe 2" />
+
+                <Button
+                    android:id="@+id/btn_subscribe2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SUBSCRIBE" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_observe3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:hint="observe 3" />
+
+                <Button
+                    android:id="@+id/btn_subscribe3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SUBSCRIBE" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_connect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CONNECT" />
+
+            <Button
+                android:id="@+id/btn_dispose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DISPOSE ALL" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_hot1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="HOT OBSERVALBE 전체동의" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_hot2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="HOT OBSERVALBE 개인정보" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_hot3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="HOT OBSERVALBE 서비스 이용약관" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_hot4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="HOT OBSERVALBE 위치정보" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </ScrollView>
 
