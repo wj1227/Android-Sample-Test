@@ -207,8 +207,7 @@ class RxJavaActivity : AppCompatActivity() {
         /**
          * backPressed
          */
-        backButtonSubject
-            .map { System.currentTimeMillis() }
+        backButtonSubject.map { System.currentTimeMillis() }
             .buffer(2, 1)
             .map { val (first, second) = it; first to second }
             .filter { (first, second) -> second - first < 1000 }

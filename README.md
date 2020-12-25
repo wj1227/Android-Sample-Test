@@ -14,29 +14,89 @@ ___
 
 
 ### branch rx
+![desc~~](Users/a1/Desktop/스크린샷\2020-12-25\오후\6.46.01.png)
+
+
 - **buffer**
-  > buffer를 활용한 onBackPressed
-            ```(kotlin)
-               >backButtonSubject
-                    .map { System.currentTimeMillis() }
-                    .buffer(2, 1)
-                    .map { val (first, second) = it; first to second }
-                    .filter { (first, second) -> second - first < 1000 }
-                    .subscribe { finish() }
-                    .let(compositeDisposable::add)
-             ```
 - **map**
-   dddasdf
 - **filter**
+  onBackPressed
+  ```(kotlin)
+          backButtonSubject.map { System.currentTimeMillis() }
+              .buffer(2, 1)
+              .map { val (first, second) = it; first to second }
+              .filter { (first, second) -> second - first < 1000 }
+              .subscribe { finish() }
+              .let(compositeDisposable::add)
+  ```
+            
 - **debounce**
+  ```(kotlin)
+          textSubject.debounce(700, TimeUnit.MILLISECONDS)
+              .observeOn(AndroidSchedulers.mainThread())
+              .subscribe(tvResult::setText)
+              .let(compositeDisposable::add)
+  ```
+  
 - **throttleFirst**
+  ```(kotlin)
+          toggleButtonSubject.throttleFirst(1000, TimeUnit.MILLISECONDS)
+              .observeOn(AndroidSchedulers.mainThread())
+              .subscribe { checkBox.isChecked = !checkBox.isChecked }
+              .let(compositeDisposable::add)
+  ```
+  
 - **merge**
+  ```(kotlin)
+          Observable.merge(leftButtonSubject, rightButtonSubject)
+              .observeOn(AndroidSchedulers.mainThread())
+              .subscribe { tapResult.text = (count++).toString() }
+              .let(compositeDisposable::add)
+  ```
+  
 - **combineLatest**
+  ```(kotlin)
+          Observable.combineLatest(
+              firstPasswordSubject,
+              secondPasswordSubject,
+              BiFunction { up: String, down: String -> up to down }
+          )
+              .map { val (up, down) = it; up == down }
+              .subscribe { showPasswordResult(it) }
+              .let(compositeDisposable::add)
+  ```
+  
 - **switchMap**
+  ```(kotlin)
+          btnTimerSubject.switchMap {
+              Observable.interval(1, TimeUnit.SECONDS)
+                  .map { second -> second + 1 }
+                  .startWith(0)
+                  .map { second ->
+                      String.format(
+                          "%02d:%02d",
+                          second / TimeUnit.MINUTES.toSeconds(1),
+                          second % TimeUnit.MINUTES.toSeconds(1)
+                      )
+                  }
+          }
+              .observeOn(AndroidSchedulers.mainThread())
+              .subscribe(timerResult::setText)
+              .let(compositeDisposable::add)
+  ```
+   
+  
 - **takeUntil**
+    - please source code
+
 - **withFromLatest**
+    - please source code
+
 - **retryWhen**
+    - please source code
+
 - **Hot Observable**
+    - please source code
 ___
 
 
