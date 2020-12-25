@@ -14,8 +14,10 @@ ___
 
 
 ### branch rx
-![desc~~](Users/a1/Desktop/스크린샷\2020-12-25\오후\6.46.01.png)
-![app image](/Users/a1/Desktop/스크린샷\2020-12-25\오후\6.46.18.png)
+![desc~~](./MarkdownImage/image1.png)
+![app image](Users/a1/MyselfProjects/MarkdownImage/image2.png)
+![](Users/a1/MyselfProjects/MarkdownImage/image3.png)
+![](Users/a1/MyselfProjects/MarkdownImage/image4.png)
 
 - **buffer**
 - **map**
