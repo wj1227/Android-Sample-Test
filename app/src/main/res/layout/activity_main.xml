@@ -26,5 +26,11 @@
         android:onClick="rxjava"
         android:text="RxJava" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Activity"
+        android:onClick="activity" />
+
 
 </LinearLayout>

@@ -1,9 +1,11 @@
 package com.jay.androidallsampletest
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.jay.androidallsampletest.activity.FirstActivity
 import com.jay.androidallsampletest.rx.RxJavaActivity
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +28,12 @@ class MainActivity : AppCompatActivity() {
 
     fun rxjava(v: View) {
         val intent = Intent(this, RxJavaActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun activity(v: View) {
+        val uri = Uri.parse("doc://url.com")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
         startActivity(intent)
     }
 }
