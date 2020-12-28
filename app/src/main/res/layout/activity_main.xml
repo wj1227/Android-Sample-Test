@@ -32,5 +32,11 @@
         android:text="Activity"
         android:onClick="activity" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CoordinatorLayout"
+        android:onClick="coordinator" />
+
 
 </LinearLayout>

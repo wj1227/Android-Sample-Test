@@ -9,13 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.WordActivity"></activity>
+        <activity android:name=".coordinator.CoordinatorActivity"></activity>
+        <activity android:name=".activity.WordActivity" />
         <activity android:name=".activity.ExcelActivity" />
         <activity android:name=".activity.PowerPointActivity" />
         <activity android:name=".activity.FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:scheme="doc" />
                 <data android:scheme="xls" />
                 <data android:scheme="ppt" />
