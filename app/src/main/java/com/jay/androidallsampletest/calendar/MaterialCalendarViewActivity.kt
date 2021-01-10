@@ -1,4 +1,4 @@
-package com.jay.androidallsampletest
+package com.jay.androidallsampletest.calendar
 
 import android.os.Bundle
 import android.widget.LinearLayout
@@ -7,6 +7,7 @@ import com.applandeo.materialcalendarview.CalendarView
 import com.applandeo.materialcalendarview.EventDay
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener
 import com.google.android.material.snackbar.Snackbar
+import com.jay.androidallsampletest.R
 import java.util.*
 
 class MaterialCalendarViewActivity : AppCompatActivity() {
