@@ -55,4 +55,7 @@ dependencies {
     implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.2.20'
     implementation group: 'io.reactivex.rxjava2', name: 'rxkotlin', version: '2.4.0'
     implementation group: 'io.reactivex.rxjava2', name: 'rxandroid', version: '2.1.1'
+
+    // lottie
+    implementation 'com.airbnb.android:lottie:3.4.0'
 }

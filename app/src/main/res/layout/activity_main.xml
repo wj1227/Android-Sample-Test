@@ -44,5 +44,11 @@
         android:text="ConstraintLayout"
         android:onClick="constraintlayout" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lottie"
+        android:onClick="lottie" />
+
 
 </LinearLayout>
