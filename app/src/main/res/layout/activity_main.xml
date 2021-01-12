@@ -50,5 +50,4 @@
         android:text="Lottie"
         android:onClick="lottie" />
 
-
 </LinearLayout>

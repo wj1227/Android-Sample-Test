@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".lottie.LottieActivity"></activity>
         <activity android:name=".constraintlayout.ConstraintLayoutActivity" />
         <activity android:name=".coordinator.CoordinatorActivity" />
