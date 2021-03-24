@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".lottie.LottieActivity"></activity>
+        <activity android:name=".expandable.ExpandableActivity"></activity>
+        <activity android:name=".databinding.DataBindingActivity" />
+        <activity android:name=".lottie.LottieActivity" />
         <activity android:name=".constraintlayout.ConstraintLayoutActivity" />
         <activity android:name=".coordinator.CoordinatorActivity" />
         <activity android:name=".activity.WordActivity" />

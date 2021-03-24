@@ -7,47 +7,72 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_timepicker"
-        android:onClick="materialCalendarView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Material Calendar View" />
+        android:layout_height="match_parent" >
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="mpchart"
-        android:text="MP Chart Library" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="rxjava"
-        android:text="RxJava" />
+            <Button
+                android:id="@+id/btn_timepicker"
+                android:onClick="materialCalendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Material Calendar View" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Activity"
-        android:onClick="activity" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="mpchart"
+                android:text="MP Chart Library" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CoordinatorLayout"
-        android:onClick="coordinator" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="rxjava"
+                android:text="RxJava" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ConstraintLayout"
-        android:onClick="constraintlayout" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Activity"
+                android:onClick="activity" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Lottie"
-        android:onClick="lottie" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CoordinatorLayout"
+                android:onClick="coordinator" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ConstraintLayout"
+                android:onClick="constraintlayout" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lottie"
+                android:onClick="lottie" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Data Binding"
+                android:onClick="databinding" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RecyclerView Expandable"
+                android:onClick="expandable" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

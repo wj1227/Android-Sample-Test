@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.jay.androidallsampletest.calendar.MaterialCalendarViewActivity
 import com.jay.androidallsampletest.constraintlayout.ConstraintLayoutActivity
 import com.jay.androidallsampletest.coordinator.CoordinatorActivity
+import com.jay.androidallsampletest.expandable.ExpandableActivity
 import com.jay.androidallsampletest.lottie.LottieActivity
 import com.jay.androidallsampletest.mpchart.MpChartActivity
 import com.jay.androidallsampletest.rx.RxJavaActivity
@@ -53,6 +54,16 @@ class MainActivity : AppCompatActivity() {
 
     fun lottie(v: View) {
         val intent = Intent(this, LottieActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun databinding(v: View) {
+        val intent = Intent(this, LottieActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun expandable(v: View) {
+        val intent = Intent(this, ExpandableActivity::class.java)
         startActivity(intent)
     }
 
