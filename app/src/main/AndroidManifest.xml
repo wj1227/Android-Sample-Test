@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".expandable.ExpandableActivity"></activity>
+        <activity android:name=".multiviewtype.MultiViewTypeActivity"></activity>
         <activity android:name=".databinding.DataBindingActivity" />
         <activity android:name=".lottie.LottieActivity" />
         <activity android:name=".constraintlayout.ConstraintLayoutActivity" />

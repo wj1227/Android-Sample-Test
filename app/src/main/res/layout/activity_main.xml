@@ -68,8 +68,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RecyclerView Expandable"
-                android:onClick="expandable" />
+                android:text="RecyclerView MultiView Type"
+                android:onClick="multiview" />
 
         </LinearLayout>
 
