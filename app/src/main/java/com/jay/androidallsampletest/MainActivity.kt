@@ -67,5 +67,4 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, MultiViewTypeActivity::class.java)
         startActivity(intent)
     }
-
 }
