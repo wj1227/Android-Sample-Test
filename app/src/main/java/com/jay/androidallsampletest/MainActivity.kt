@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.jay.androidallsampletest.calendar.MaterialCalendarViewActivity
 import com.jay.androidallsampletest.constraintlayout.ConstraintLayoutActivity
 import com.jay.androidallsampletest.coordinator.CoordinatorActivity
+import com.jay.androidallsampletest.lifecycle.LifecycleActivity
 import com.jay.androidallsampletest.lottie.LottieActivity
 import com.jay.androidallsampletest.mpchart.MpChartActivity
 import com.jay.androidallsampletest.multiviewtype.MultiViewTypeActivity
@@ -57,8 +58,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun databinding(v: View) {
-        val intent = Intent(this, LottieActivity::class.java)
+    fun lifecycle(v: View) {
+        val intent = Intent(this, LifecycleActivity::class.java)
         startActivity(intent)
     }
 
