@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.jay.androidallsampletest.calendar.MaterialCalendarViewActivity
 import com.jay.androidallsampletest.constraintlayout.ConstraintLayoutActivity
 import com.jay.androidallsampletest.coordinator.CoordinatorActivity
+import com.jay.androidallsampletest.factory.FactoryActivity
 import com.jay.androidallsampletest.lifecycle.LifecycleActivity
 import com.jay.androidallsampletest.lottie.LottieActivity
 import com.jay.androidallsampletest.mpchart.MpChartActivity
@@ -65,6 +66,11 @@ class MainActivity : AppCompatActivity() {
 
     fun multiview(v: View) {
         val intent = Intent(this, MultiViewTypeActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun factory(v: View) {
+        val intent = Intent(this, FactoryActivity::class.java)
         startActivity(intent)
     }
 }

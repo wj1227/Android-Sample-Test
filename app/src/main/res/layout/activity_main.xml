@@ -71,6 +71,12 @@
                 android:text="RecyclerView MultiView Type"
                 android:onClick="multiview" />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fragment Factory"
+                android:onClick="factory" />
+
         </LinearLayout>
 
     </ScrollView>
