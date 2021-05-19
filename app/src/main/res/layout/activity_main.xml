@@ -77,6 +77,12 @@
                 android:text="Fragment Factory"
                 android:onClick="factory" />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Facebook"
+                android:onClick="facebook" />
+
         </LinearLayout>
 
     </ScrollView>

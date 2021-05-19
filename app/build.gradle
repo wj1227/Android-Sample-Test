@@ -63,4 +63,7 @@ dependencies {
 
     // lottie
     implementation 'com.airbnb.android:lottie:3.4.0'
+
+    // facebook
+    implementation 'com.facebook.android:facebook-login:8.1.0'
 }
