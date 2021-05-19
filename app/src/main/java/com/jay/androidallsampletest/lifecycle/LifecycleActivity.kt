@@ -13,28 +13,33 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.jay.androidallsampletest.R
+import com.jay.androidallsampletest.lifecycle.fragment.FirstFragment
 import kotlinx.android.synthetic.main.item_coordinator.*
 
 class LifecycleActivity : AppCompatActivity() {
     private val TAG = javaClass.simpleName
     private lateinit var btnNoti: Button
+    private val firstFragment by lazy(::FirstFragment)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lifecycle)
         Log.d(TAG, "onCreate: ")
 
-        toast()
-        dialog()
-        Handler(Looper.getMainLooper()).postDelayed({
-            //startActivity(Intent(this, LifecycleActivity2::class.java))
-        }, 4000L)
+        addfragment()
+//        toast()
+//        dialog()
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            //startActivity(Intent(this, LifecycleActivity2::class.java))
+//        }, 4000L)
 
         createNotification()
         btnNoti = findViewById(R.id.btn_noti)
@@ -127,5 +132,9 @@ class LifecycleActivity : AppCompatActivity() {
                 this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
+    }
+
+    private fun addfragment() {
+        supportFragmentManager.beginTransaction().replace(R.id.frame_layout, firstFragment).commit()
     }
 }

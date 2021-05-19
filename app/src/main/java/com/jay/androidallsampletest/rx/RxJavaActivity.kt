@@ -417,7 +417,6 @@ class RxJavaActivity : AppCompatActivity() {
         }
     }
 
-
     override fun onBackPressed() {
         backButtonSubject.onNext(Unit)
     }
