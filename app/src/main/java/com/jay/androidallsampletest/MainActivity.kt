@@ -16,6 +16,7 @@ import com.jay.androidallsampletest.mpchart.MpChartActivity
 import com.jay.androidallsampletest.multiviewtype.MultiViewTypeActivity
 import com.jay.androidallsampletest.progressbar.ProgressbarActivity
 import com.jay.androidallsampletest.rx.RxJavaActivity
+import com.jay.androidallsampletest.viewlifecycle.ViewLifecycleActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -83,6 +84,11 @@ class MainActivity : AppCompatActivity() {
 
     fun progressbar(v: View) {
         val intent = Intent(this, ProgressbarActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun viewlifecycle(v: View) {
+        val intent = Intent(this, ViewLifecycleActivity::class.java)
         startActivity(intent)
     }
 }

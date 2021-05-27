@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".progressbar.ProgressbarActivity"></activity>
+        <activity android:name=".viewlifecycle.ViewLifecycleActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity android:name=".progressbar.ProgressbarActivity" />
         <activity
             android:name=".facebook.FacebookActivity"
             android:exported="true">

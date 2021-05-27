@@ -89,6 +89,12 @@
                 android:text="Progressbar"
                 android:onClick="progressbar" />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View Lifecycle"
+                android:onClick="viewlifecycle" />
+
         </LinearLayout>
 
     </ScrollView>
