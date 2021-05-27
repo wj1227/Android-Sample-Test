@@ -14,6 +14,7 @@ import com.jay.androidallsampletest.lifecycle.LifecycleActivity
 import com.jay.androidallsampletest.lottie.LottieActivity
 import com.jay.androidallsampletest.mpchart.MpChartActivity
 import com.jay.androidallsampletest.multiviewtype.MultiViewTypeActivity
+import com.jay.androidallsampletest.progressbar.ProgressbarActivity
 import com.jay.androidallsampletest.rx.RxJavaActivity
 
 class MainActivity : AppCompatActivity() {
@@ -77,6 +78,11 @@ class MainActivity : AppCompatActivity() {
 
     fun facebook(v: View) {
         val intent = Intent(this, FacebookActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun progressbar(v: View) {
+        val intent = Intent(this, ProgressbarActivity::class.java)
         startActivity(intent)
     }
 }

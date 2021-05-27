@@ -83,6 +83,12 @@
                 android:text="Facebook"
                 android:onClick="facebook" />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Progressbar"
+                android:onClick="progressbar" />
+
         </LinearLayout>
 
     </ScrollView>
