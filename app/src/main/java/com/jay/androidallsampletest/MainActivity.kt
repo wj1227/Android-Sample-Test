@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.jay.androidallsampletest.calendar.MaterialCalendarViewActivity
 import com.jay.androidallsampletest.constraintlayout.ConstraintLayoutActivity
 import com.jay.androidallsampletest.coordinator.CoordinatorActivity
+import com.jay.androidallsampletest.createcustomview.CreateCustomViewActivity
 import com.jay.androidallsampletest.facebook.FacebookActivity
 import com.jay.androidallsampletest.factory.FactoryActivity
 import com.jay.androidallsampletest.lifecycle.LifecycleActivity
@@ -16,6 +17,7 @@ import com.jay.androidallsampletest.mpchart.MpChartActivity
 import com.jay.androidallsampletest.multiviewtype.MultiViewTypeActivity
 import com.jay.androidallsampletest.progressbar.ProgressbarActivity
 import com.jay.androidallsampletest.rx.RxJavaActivity
+import com.jay.androidallsampletest.toolbartest.ToolbarTestActivity
 import com.jay.androidallsampletest.viewlifecycle.ViewLifecycleActivity
 
 class MainActivity : AppCompatActivity() {
@@ -89,6 +91,16 @@ class MainActivity : AppCompatActivity() {
 
     fun viewlifecycle(v: View) {
         val intent = Intent(this, ViewLifecycleActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun customview(v: View) {
+        val intent = Intent(this, CreateCustomViewActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun toolbartest(v: View) {
+        val intent = Intent(this, ToolbarTestActivity::class.java)
         startActivity(intent)
     }
 }

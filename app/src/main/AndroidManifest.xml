@@ -11,8 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".viewlifecycle.ViewLifecycleActivity"
-            android:windowSoftInputMode="stateHidden"></activity>
+        <activity android:name=".toolbartest.ToolbarTestActivity"></activity>
+        <activity android:name=".createcustomview.CreateCustomViewActivity" />
+        <activity
+            android:name=".viewlifecycle.ViewLifecycleActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".progressbar.ProgressbarActivity" />
         <activity
             android:name=".facebook.FacebookActivity"

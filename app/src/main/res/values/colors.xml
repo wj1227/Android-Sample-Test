@@ -15,4 +15,5 @@
     <color name="color_reserve_color">#49BBC4</color>
     <color name="color_alram_read">#DDFFDD</color>
     <color name="color_yellow">#FFFF00</color>
+    <color name="color_transle">#00000000</color>
 </resources>

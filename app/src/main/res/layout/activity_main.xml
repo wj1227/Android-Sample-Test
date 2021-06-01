@@ -95,14 +95,20 @@
                 android:text="View Lifecycle"
                 android:onClick="viewlifecycle" />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create a Custom View"
+                android:onClick="customview" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Toolbar Test"
+                android:onClick="toolbartest" />
+
         </LinearLayout>
 
     </ScrollView>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Lifecycle"
-        android:onClick="lifecycle" />
 
 </LinearLayout>

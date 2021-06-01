@@ -5,4 +5,10 @@
     <string name="facebook_app_id">473366963881483</string>
     <string name="fb_login_protocol_scheme">fb473366963881483</string>
 
+    <!-- create a custom view -->
+    <string name="fan_off">off</string>
+    <string name="fan_low">1</string>
+    <string name="fan_medium">2</string>
+    <string name="fan_high">3</string>
+
 </resources>
