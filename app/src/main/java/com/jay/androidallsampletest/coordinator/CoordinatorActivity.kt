@@ -1,5 +1,6 @@
 package com.jay.androidallsampletest.coordinator
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +21,9 @@ class CoordinatorActivity : AppCompatActivity() {
         setContentView(R.layout.activity_coordinator)
 
         recyclerView = findViewById(R.id.recycler_view)
-        adapter = CoordinatorAdapter()
+        adapter = CoordinatorAdapter {
+            startActivity(Intent(this, CoordiSample::class.java))
+        }
 
         recyclerView.adapter = adapter
 
@@ -42,8 +45,11 @@ class CoordinatorActivity : AppCompatActivity() {
 
 }
 
+typealias RecyclerViewItemClick = (Item) -> Unit
 
-class CoordinatorAdapter : RecyclerView.Adapter<CoordinatorAdapter.ItemViewHolder>() {
+class CoordinatorAdapter(
+    private val onItemClick: RecyclerViewItemClick? = null
+) : RecyclerView.Adapter<CoordinatorAdapter.ItemViewHolder>() {
     private val items = mutableListOf<Item>()
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -56,7 +62,16 @@ class CoordinatorAdapter : RecyclerView.Adapter<CoordinatorAdapter.ItemViewHolde
             false
         )
 
-        return ItemViewHolder(view)
+        return ItemViewHolder(view).also {
+            if (onItemClick == null) {
+                return@also
+            } else {
+                it.itemView.setOnClickListener { _ ->
+                    val currentItem = items.getOrNull(it.adapterPosition) ?: return@setOnClickListener
+                    onItemClick.invoke(currentItem)
+                }
+            }
+        }
     }
 
     override fun onBindViewHolder(holder: CoordinatorAdapter.ItemViewHolder, position: Int) {
