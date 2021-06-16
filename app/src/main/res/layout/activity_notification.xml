@@ -14,7 +14,15 @@
     <Button
         android:id="@+id/btn_click_notification"
         android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:text="Notification Click" />
+
+    <Button
+        android:id="@+id/btn_notification_btn_add"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:text="Notification Button add" />
 
 </LinearLayout>

@@ -5,6 +5,8 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
@@ -24,6 +26,22 @@ class NotificationActivity : AppCompatActivity() {
         findViewById(R.id.btn_click_notification)
     }
 
+    private val actionNotification: Button by lazy {
+        findViewById(R.id.btn_notification_btn_add)
+    }
+
+//    private val receiver: JayBroadcastReceiver by lazy {
+//        JayBroadcastReceiver()
+//    }
+//
+//    private val intentFilter: IntentFilter by lazy {
+//        IntentFilter().apply {
+//            addAction(Intent.ACTION_POWER_CONNECTED)
+//            addAction(Intent.ACTION_POWER_DISCONNECTED)
+//            //addAction("action!!!!")
+//        }
+//    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)
@@ -32,12 +50,25 @@ class NotificationActivity : AppCompatActivity() {
         createChannel()
     }
 
+    override fun onStart() {
+        super.onStart()
+        //registerReceiver(receiver, intentFilter)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        //unregisterReceiver(receiver)
+    }
+
     private fun initClickListener() {
         createNotification.setOnClickListener {
             create()
         }
         clickNotification.setOnClickListener {
             click()
+        }
+        actionNotification.setOnClickListener {
+            action()
         }
     }
 
@@ -65,6 +96,26 @@ class NotificationActivity : AppCompatActivity() {
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
+
+        notify(builder)
+    }
+
+    private fun action() {
+        val intent = Intent(this, JayBroadcastReceiver::class.java).apply {
+            action = "noti"
+            putExtra("notifi", 9999)
+        }
+
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.sample_icon_3)
+            .setContentTitle("action title")
+            .setContentText("action description!!!")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+            .addAction(R.drawable.ic_launcher_foreground, "add button", pendingIntent)
 
         notify(builder)
     }

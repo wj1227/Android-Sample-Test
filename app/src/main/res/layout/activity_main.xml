@@ -29,16 +29,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="mpchart"
+                android:layout_marginTop="10dp"
                 android:text="MP Chart Library" />
 
             <Button
                 android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:onClick="rxjava"
                 android:text="RxJava" />
 
             <Button
                 android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:text="Activity"
                 android:onClick="activity" />
@@ -47,72 +50,84 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="CoordinatorLayout"
+                android:layout_marginTop="10dp"
                 android:onClick="coordinator" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ConstraintLayout"
+                android:layout_marginTop="10dp"
                 android:onClick="constraintlayout" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Lottie"
+                android:layout_marginTop="10dp"
                 android:onClick="lottie" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Life Cycle"
+                android:layout_marginTop="10dp"
                 android:onClick="lifecycle" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="RecyclerView MultiView Type"
+                android:layout_marginTop="10dp"
                 android:onClick="multiview" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Fragment Factory"
+                android:layout_marginTop="10dp"
                 android:onClick="factory" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Facebook"
+                android:layout_marginTop="10dp"
                 android:onClick="facebook" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Progressbar"
+                android:layout_marginTop="10dp"
                 android:onClick="progressbar" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="View Lifecycle"
+                android:layout_marginTop="10dp"
                 android:onClick="viewlifecycle" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Create a Custom View"
+                android:layout_marginTop="10dp"
                 android:onClick="customview" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Toolbar Test"
+                android:layout_marginTop="10dp"
                 android:onClick="toolbartest" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Notification"
+                android:layout_marginTop="10dp"
                 android:onClick="notification" />
 
         </LinearLayout>
