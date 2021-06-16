@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -106,6 +108,12 @@
                 android:layout_height="wrap_content"
                 android:text="Toolbar Test"
                 android:onClick="toolbartest" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Notification"
+                android:onClick="notification" />
 
         </LinearLayout>
 

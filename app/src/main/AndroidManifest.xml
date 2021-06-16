@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".toolbartest.ToolbarTestActivity"></activity>
+        <activity android:name=".notification.NotificationActivity"/>
         <activity android:name=".coordinator.CoordiSample"/>
         <activity android:name=".createcustomview.CreateCustomViewActivity" />
         <activity

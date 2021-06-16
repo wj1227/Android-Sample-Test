@@ -15,6 +15,7 @@ import com.jay.androidallsampletest.lifecycle.LifecycleActivity
 import com.jay.androidallsampletest.lottie.LottieActivity
 import com.jay.androidallsampletest.mpchart.MpChartActivity
 import com.jay.androidallsampletest.multiviewtype.MultiViewTypeActivity
+import com.jay.androidallsampletest.notification.NotificationActivity
 import com.jay.androidallsampletest.progressbar.ProgressbarActivity
 import com.jay.androidallsampletest.rx.RxJavaActivity
 import com.jay.androidallsampletest.toolbartest.ToolbarTestActivity
@@ -101,6 +102,11 @@ class MainActivity : AppCompatActivity() {
 
     fun toolbartest(v: View) {
         val intent = Intent(this, ToolbarTestActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun notification(v: View) {
+        val intent = Intent(this, NotificationActivity::class.java)
         startActivity(intent)
     }
 }
