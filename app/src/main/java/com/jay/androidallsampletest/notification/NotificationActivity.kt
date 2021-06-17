@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
@@ -14,6 +16,13 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.RemoteInput
 import com.jay.androidallsampletest.R
 import com.jay.androidallsampletest.toolbartest.ToolbarTestActivity
+import io.reactivex.Observable
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
+import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 
 class NotificationActivity : AppCompatActivity() {
     private val TAG = javaClass.simpleName
@@ -32,6 +41,10 @@ class NotificationActivity : AppCompatActivity() {
 
     private val replyNotification: Button by lazy {
         findViewById(R.id.btn_reply_notification)
+    }
+
+    private val progressNotification: Button by lazy {
+        findViewById(R.id.btn_progress_notification)
     }
 
 //    private val receiver: JayBroadcastReceiver by lazy {
@@ -81,6 +94,9 @@ class NotificationActivity : AppCompatActivity() {
         }
         replyNotification.setOnClickListener {
             reply()
+        }
+        progressNotification.setOnClickListener {
+            progress()
         }
     }
 
@@ -183,6 +199,32 @@ class NotificationActivity : AppCompatActivity() {
         notify(builder)
     }
 
+    private fun progress() {
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_arrow_left)
+            .setContentTitle("download....")
+            .setContentText("in progress")
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+
+        NotificationManagerCompat.from(this).apply {
+            builder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false)
+            notify(NOTIFICATION_ID, builder.build())
+
+            Observable.interval(1, TimeUnit.SECONDS, Schedulers.trampoline())
+                .takeWhile { it.toInt() <= 10 }
+                .subscribe {
+                    if (it.toInt() == 10) {
+                        builder.setContentText("done!")
+                        builder.setProgress(0, 0, false)
+                        notify(NOTIFICATION_ID, builder.build())
+                    } else {
+                        builder.setProgress(PROGRESS_MAX, it.toInt(), false)
+                        notify(NOTIFICATION_ID, builder.build())
+                    }
+                }.addTo(CompositeDisposable())
+        }
+    }
+
     private fun notify(builder: NotificationCompat.Builder) {
         with(NotificationManagerCompat.from(this)) {
             notify(NOTIFICATION_ID, builder.build())
@@ -212,5 +254,8 @@ class NotificationActivity : AppCompatActivity() {
         const val NOTIFICATION_ID = 100
 
         const val KEY_TEXT_REPLY = "key_text_reply"
+
+        const val PROGRESS_MAX = 10
+        var PROGRESS_CURRENT = 0
     }
 }
