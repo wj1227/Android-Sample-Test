@@ -11,4 +11,6 @@
     <string name="fan_medium">2</string>
     <string name="fan_high">3</string>
 
+    <string name="test">jay_test</string>
+
 </resources>
