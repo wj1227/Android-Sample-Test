@@ -9,6 +9,7 @@ import com.jay.androidallsampletest.calendar.MaterialCalendarViewActivity
 import com.jay.androidallsampletest.constraintlayout.ConstraintLayoutActivity
 import com.jay.androidallsampletest.coordinator.CoordinatorActivity
 import com.jay.androidallsampletest.createcustomview.CreateCustomViewActivity
+import com.jay.androidallsampletest.doucmentdownload.DoucmentDownloadActivity
 import com.jay.androidallsampletest.facebook.FacebookActivity
 import com.jay.androidallsampletest.factory.FactoryActivity
 import com.jay.androidallsampletest.lifecycle.LifecycleActivity
@@ -107,6 +108,11 @@ class MainActivity : AppCompatActivity() {
 
     fun notification(v: View) {
         val intent = Intent(this, NotificationActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun download(v: View) {
+        val intent = Intent(this, DoucmentDownloadActivity::class.java)
         startActivity(intent)
     }
 }
