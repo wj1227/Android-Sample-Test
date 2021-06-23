@@ -46,4 +46,18 @@
         android:layout_height="wrap_content"
         android:text="Notification Expandable" />
 
+    <Button
+        android:id="@+id/btn_large_block_of_text_notification"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:text="Notification Large Block of Text" />
+
+    <Button
+        android:id="@+id/btn_media_control_notification"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:text="Notification Media Controls" />
+
 </LinearLayout>

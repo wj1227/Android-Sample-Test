@@ -50,6 +50,14 @@ class NotificationActivity : AppCompatActivity() {
         findViewById(R.id.btn_expandable_notification)
     }
 
+    private val largeBlockNotification: Button by lazy {
+        findViewById(R.id.btn_large_block_of_text_notification)
+    }
+
+    private val mediaControlNotification: Button by lazy {
+        findViewById(R.id.btn_media_control_notification)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notification)
@@ -81,6 +89,12 @@ class NotificationActivity : AppCompatActivity() {
         }
         expandableNotification.setOnClickListener {
             expandable()
+        }
+        largeBlockNotification.setOnClickListener {
+            largeBlockOfText()
+        }
+        mediaControlNotification.setOnClickListener {
+            mediaControls()
         }
     }
 
@@ -218,11 +232,46 @@ class NotificationActivity : AppCompatActivity() {
             .setStyle(
                 NotificationCompat.BigPictureStyle()
                     .bigPicture(toBitmap())
-                    //.bigLargeIcon(null)
+                    .bigLargeIcon(null) // <-- 노티를 펼쳤을 때 이놈이 null이면 setLargeIcon이 없어짐
             )
 
         notify(builder)
     }
+
+    private fun largeBlockOfText() {
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_arrow_left)
+            .setContentTitle("title")
+            .setContentText("description")
+            .setLargeIcon(toBitmap())
+            .setStyle(
+                NotificationCompat.BigTextStyle()
+                    .bigText(getString(R.string.large_block_of_text))
+            )
+
+        notify(builder)
+    }
+
+    private fun mediaControls() {
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+            .setSmallIcon(R.drawable.ic_music)
+            .addAction(R.drawable.ic_bad, "bad", null) // #0
+            .addAction(R.drawable.ic_skip_previous, "previous", null) // #0
+            .addAction(R.drawable.ic_pause, "pause", null) // #1
+            .addAction(R.drawable.ic_skip_next, "mext", null) // #2
+            .addAction(R.drawable.ic_like, "like", null) // #0
+            .setStyle(
+                androidx.media.app.NotificationCompat.MediaStyle()
+                    .setShowActionsInCompactView(1, 2, 3)
+            )
+            .setContentTitle("jay music player")
+            .setContentText("title: call~~~~~~~~~~~~")
+            .setLargeIcon(toBitmap())
+
+        notify(builder)
+    }
+
 
     private fun notify(builder: NotificationCompat.Builder) {
         with(NotificationManagerCompat.from(this)) {

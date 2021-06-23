@@ -13,4 +13,8 @@
 
     <string name="test">jay_test</string>
 
+    <string name="large_block_of_text">
+        asdfqasdfasdfas\nalsdkfjalkewrjalsxwektja.wrlztj.gawlrkyjtgalkwrxjyasxltajwkrezwerltgkajsrt\naosdkjxalwrekjtax.lwrykjaw.rlkyjalkwrxjtalkxwrejtk
+    </string>
+
 </resources>
