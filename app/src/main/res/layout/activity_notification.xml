@@ -39,4 +39,11 @@
         android:layout_height="wrap_content"
         android:text="Notification Progress" />
 
+    <Button
+        android:id="@+id/btn_expandable_notification"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:text="Notification Expandable" />
+
 </LinearLayout>

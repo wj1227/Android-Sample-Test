@@ -1,13 +1,14 @@
 package com.jay.androidallsampletest.notification
 
-import android.app.*
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,8 +18,6 @@ import androidx.core.app.RemoteInput
 import com.jay.androidallsampletest.R
 import com.jay.androidallsampletest.toolbartest.ToolbarTestActivity
 import io.reactivex.Observable
-import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
@@ -47,17 +46,9 @@ class NotificationActivity : AppCompatActivity() {
         findViewById(R.id.btn_progress_notification)
     }
 
-//    private val receiver: JayBroadcastReceiver by lazy {
-//        JayBroadcastReceiver()
-//    }
-//
-//    private val intentFilter: IntentFilter by lazy {
-//        IntentFilter().apply {
-//            addAction(Intent.ACTION_POWER_CONNECTED)
-//            addAction(Intent.ACTION_POWER_DISCONNECTED)
-//            //addAction("action!!!!")
-//        }
-//    }
+    private val expandableNotification: Button by lazy {
+        findViewById(R.id.btn_expandable_notification)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,16 +61,6 @@ class NotificationActivity : AppCompatActivity() {
         if (!text.isNullOrEmpty()) {
             Toast.makeText(this, "$text", Toast.LENGTH_SHORT).show()
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        //registerReceiver(receiver, intentFilter)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        //unregisterReceiver(receiver)
     }
 
     private fun initClickListener() {
@@ -97,6 +78,9 @@ class NotificationActivity : AppCompatActivity() {
         }
         progressNotification.setOnClickListener {
             progress()
+        }
+        expandableNotification.setOnClickListener {
+            expandable()
         }
     }
 
@@ -225,6 +209,21 @@ class NotificationActivity : AppCompatActivity() {
         }
     }
 
+    private fun expandable() {
+        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_arrow_left)
+            .setContentTitle("title")
+            .setContentText("description")
+            .setLargeIcon(toBitmap())
+            .setStyle(
+                NotificationCompat.BigPictureStyle()
+                    .bigPicture(toBitmap())
+                    //.bigLargeIcon(null)
+            )
+
+        notify(builder)
+    }
+
     private fun notify(builder: NotificationCompat.Builder) {
         with(NotificationManagerCompat.from(this)) {
             notify(NOTIFICATION_ID, builder.build())
@@ -240,13 +239,18 @@ class NotificationActivity : AppCompatActivity() {
                 description = descriptionText
             }
 
-            val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
     }
 
     private fun getMessageText(intent: Intent): CharSequence? {
         return RemoteInput.getResultsFromIntent(intent)?.getCharSequence(KEY_TEXT_REPLY)
+    }
+
+    private fun toBitmap(): Bitmap {
+        return BitmapFactory.decodeResource(resources, R.drawable.sample_icon_1)
     }
 
     companion object {
